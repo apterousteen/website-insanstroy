@@ -1,23 +1,827 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Test form</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ремонт квартир в Екатеринбурге | Инсанстрой</title>
+    <!--Third-party-->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script defer src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!--Own-->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="page_carousel.css">
+    <script defer src="script.js"></script>
+    <script defer src="page_carousel.js"></script>
     <script defer src="tgPost.js"></script>
 </head>
 <body>
-<form class="modal__form" id="form-tg">
-    <label>First Name</label>
-    <input type="text" name="client-name" required/>
-    <label>Phone Number</label>
-    <input type="tel" name="client-phone" required/>
-    <label>Question</label>
-    <input type="text" name="client-question" required/>
+<nav>
+    <div class="nav-content">
+        <a href="index.html">
+            <img class="nav-logo" src="img/icons/img_logo.svg" alt="logo">
+        </a>
+        <div class="nav-links">
+            <a href="#section-about" class="nav-link">о нас</a>
+            <a href="#section-portfolio" class="nav-link">портфолио</a>
+            <a href="#section-types" class="nav-link">виды работ</a>
+            <a href="#section-prices" class="nav-link">цены</a>
+            <a href="#section-calc" class="nav-link">калькулятор</a>
+            <a href="#section-faq" class="nav-link">faq</a>
+            <a href="#footer" class="nav-link">контакты</a>
+            <a href="https://wa.me/79122617576?text=Здравствуйте,%20перешел%20с%20сайта,%20интересует..."
+               target="_blank" class="nav-link" id="nav-whatsapp">
+                <img src="img/icons/icons8-whatsapp.svg" alt="whatsapp logo" width="28px">
+            </a>
+            <a href="https://t.me/insan64" target="_blank" class="nav-link">
+                <img src="img/icons/icons8-telegram.svg" alt="telegram logo" width="24px">
+            </a>
+        </div>
+    </div>
+</nav>
 
-    <button class="btn" type="submit">Submit</button>
-</form>
-<div id="form-alert" style="display: none">NTCN</div>
+<!--Section Hero-->
+<section class="grid" id="section-hero">
+    <div id="hero-more">
+        <div class="hero-more-line" id="hero-more-line-left"></div>
+        <a href="#section-about" class="button-text-M">УЗНАТЬ БОЛЬШЕ</a>
+        <div class="hero-more-line" id="hero-more-line-right">
+            <div id="hero-more-line-vertical"></div>
+        </div>
+    </div>
+
+    <div class="hero-background"></div>
+    <div class="hero-container">
+        <div class="text">
+            <h1>РЕМОНТ КВАРТИР В<br>ЕКАТЕРИНБУРГЕ</h1>
+            <p class="subtitle">Гарантия качества. Реальные сроки. Разумные цены.</p>
+
+            <a href="#section-form">
+                <button class="button-large button-text-M">ОСТАВИТЬ ЗАЯВКУ</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-gallery">
+        <!-- Flickity Slider-->
+        <div class="container-carousel">
+            <div class="carousel carousel-hero" data-type="hero">
+                <div class="carousel-cell">
+                    <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                </div>
+                <div class="carousel-cell">
+                    <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                </div>
+                <div class="carousel-cell">
+                    <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                </div>
+                <div class="carousel-cell">
+                    <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                </div>
+            </div>
+
+            <div class="carousel-ui">
+                <p class="carousel-status status-hero">
+                    <span class="start"></span>
+                    <span class="divider"></span>
+                    <span class="end"></span>
+                </p>
+
+                <div class="container-button">
+                    <button class="button button-arrow button--previous button-p-hero">
+                        <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.9435 8.7239C16.4642 9.2446 16.4642 10.0888 15.9435 10.6095L12.8863 13.6667L20.334 13.6667C21.0704 13.6667 21.6673 14.2637 21.6673 15C21.6673 15.7364 21.0704 16.3334 20.334 16.3334L12.8863 16.3334L15.9435 19.3906C16.4642 19.9113 16.4642 20.7555 15.9435 21.2762C15.4228 21.7969 14.5785 21.7969 14.0578 21.2762L8.72451 15.9428C8.20381 15.4222 8.20381 14.5779 8.72451 14.0572L14.0578 8.7239C14.5785 8.2032 15.4228 8.2032 15.9435 8.7239Z"
+                                  fill="#2D323D"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M0.333984 15C0.333984 6.89986 6.90047 0.333374 15.0007 0.333374C23.1008 0.333374 29.6673 6.89986 29.6673 15C29.6673 23.1002 23.1008 29.6667 15.0007 29.6667C6.90047 29.6667 0.333984 23.1002 0.333984 15ZM15.0007 3.00004C8.37323 3.00004 3.00065 8.37262 3.00065 15C3.00065 21.6275 8.37323 27 15.0007 27C21.6281 27 27.0006 21.6275 27.0006 15C27.0006 8.37262 21.6281 3.00004 15.0007 3.00004Z"
+                                  fill="#2D323D"/>
+                        </svg>
+                    </button>
+
+                    <button class="button button-arrow button--next button-n-hero">
+                        <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.9435 8.7239L21.2768 14.0572C21.7975 14.5779 21.7975 15.4222 21.2768 15.9428L15.9435 21.2762C15.4228 21.7969 14.5785 21.7969 14.0578 21.2762C13.5371 20.7555 13.5371 19.9113 14.0578 19.3906L17.115 16.3334H9.66732C8.93094 16.3334 8.33398 15.7364 8.33398 15C8.33398 14.2637 8.93094 13.6667 9.66732 13.6667H17.115L14.0578 10.6095C13.5371 10.0888 13.5371 9.2446 14.0578 8.7239C14.5785 8.2032 15.4228 8.2032 15.9435 8.7239Z"
+                                  fill="#2D323D"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M0.333984 15C0.333984 6.89986 6.90047 0.333374 15.0007 0.333374C23.1008 0.333374 29.6673 6.89986 29.6673 15C29.6673 23.1002 23.1008 29.6667 15.0007 29.6667C6.90047 29.6667 0.333984 23.1002 0.333984 15ZM15.0007 3.00004C8.37323 3.00004 3.00065 8.37262 3.00065 15C3.00065 21.6275 8.37323 27 15.0007 27C21.6281 27 27.0006 21.6275 27.0006 15C27.0006 8.37262 21.6281 3.00004 15.0007 3.00004Z"
+                                  fill="#2D323D"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Flickity Slider End-->
+    </div>
+</section>
+<!--Section Hero End-->
+
+<!--Section About-->
+<section class="grid" id="section-about">
+    <div class="about-container">
+        <div class="heading about-heading">
+            <div></div>
+            <h2>ПОЧЕМУ<br>ВЫБИРАЮТ НАС</h2>
+        </div>
+
+        <div class="about-text">
+            <p><span>Insanstroy</span> — это команда
+                профессионалов, заслуживших доверие многих жителей Екатеринбурга. Мы готовы реализовать все
+                ваши представления о стиле, комфорте и уюте. </p>
+
+            <div class="about-number-container">
+                <span class="about-number">15+</span><br>
+                <span class="about-number-text">лет успешной<br>работы</span>
+            </div>
+
+            <div class="about-number-container">
+                <span class="about-number">280+</span><br>
+                <span class="about-number-text">сделанных<br>объектов</span>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section About End-->
+
+<!--Section Portfolio-->
+<section class="grid" id="section-portfolio">
+    <div class="heading portfolio-heading">
+        <div id="portfolio-line"></div>
+        <div></div>
+        <h2>Примеры работ</h2>
+    </div>
+
+    <div class="portfolio-container">
+        <div class="portfolio-container-row">
+            <div class="portfolio-gallery">
+                <!-- Flickity Slider-->
+                <div class="container-carousel">
+                    <div class="carousel carousel-portfolio-1" data-type="portfolio-1">
+                        <div class="carousel-cell">
+                            <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                        </div>
+                        <div class="carousel-cell">
+                            <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                        </div>
+                        <div class="carousel-cell">
+                            <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                        </div>
+                        <div class="carousel-cell">
+                            <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                        </div>
+                    </div>
+
+                    <div class="carousel-ui">
+                        <p class="carousel-status status-portfolio-1">
+                            <span class="start"></span>
+                            <span class="divider"></span>
+                            <span class="end"></span>
+                        </p>
+
+                        <div class="container-button">
+                            <button class="button button-arrow button--previous button-p-portfolio-1">
+                                <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.9435 8.7239C16.4642 9.2446 16.4642 10.0888 15.9435 10.6095L12.8863 13.6667L20.334 13.6667C21.0704 13.6667 21.6673 14.2637 21.6673 15C21.6673 15.7364 21.0704 16.3334 20.334 16.3334L12.8863 16.3334L15.9435 19.3906C16.4642 19.9113 16.4642 20.7555 15.9435 21.2762C15.4228 21.7969 14.5785 21.7969 14.0578 21.2762L8.72451 15.9428C8.20381 15.4222 8.20381 14.5779 8.72451 14.0572L14.0578 8.7239C14.5785 8.2032 15.4228 8.2032 15.9435 8.7239Z"
+                                          fill="#2D323D"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M0.333984 15C0.333984 6.89986 6.90047 0.333374 15.0007 0.333374C23.1008 0.333374 29.6673 6.89986 29.6673 15C29.6673 23.1002 23.1008 29.6667 15.0007 29.6667C6.90047 29.6667 0.333984 23.1002 0.333984 15ZM15.0007 3.00004C8.37323 3.00004 3.00065 8.37262 3.00065 15C3.00065 21.6275 8.37323 27 15.0007 27C21.6281 27 27.0006 21.6275 27.0006 15C27.0006 8.37262 21.6281 3.00004 15.0007 3.00004Z"
+                                          fill="#2D323D"/>
+                                </svg>
+                            </button>
+
+                            <button class="button button-arrow button--next button-n-portfolio-1">
+                                <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.9435 8.7239L21.2768 14.0572C21.7975 14.5779 21.7975 15.4222 21.2768 15.9428L15.9435 21.2762C15.4228 21.7969 14.5785 21.7969 14.0578 21.2762C13.5371 20.7555 13.5371 19.9113 14.0578 19.3906L17.115 16.3334H9.66732C8.93094 16.3334 8.33398 15.7364 8.33398 15C8.33398 14.2637 8.93094 13.6667 9.66732 13.6667H17.115L14.0578 10.6095C13.5371 10.0888 13.5371 9.2446 14.0578 8.7239C14.5785 8.2032 15.4228 8.2032 15.9435 8.7239Z"
+                                          fill="#2D323D"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M0.333984 15C0.333984 6.89986 6.90047 0.333374 15.0007 0.333374C23.1008 0.333374 29.6673 6.89986 29.6673 15C29.6673 23.1002 23.1008 29.6667 15.0007 29.6667C6.90047 29.6667 0.333984 23.1002 0.333984 15ZM15.0007 3.00004C8.37323 3.00004 3.00065 8.37262 3.00065 15C3.00065 21.6275 8.37323 27 15.0007 27C21.6281 27 27.0006 21.6275 27.0006 15C27.0006 8.37262 21.6281 3.00004 15.0007 3.00004Z"
+                                          fill="#2D323D"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flickity Slider End-->
+            </div>
+            <div class="portfolio-text-container">
+                <div>
+                    <div class="portfolio-text-heading">
+                        <h3>ремонт студии, 2023</h3>
+                        <p class="body-2">ЖК Северный квартал, Брусника</p>
+                    </div>
+                    <p class="body-2">Демонтаж, черновые, отделочные работы по дизайн-проекту</p>
+                    <div class="icons-container">
+                        <div class="icon-container">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.375 3.75C17.7537 3.75 17.25 4.25368 17.25 4.875C17.25 5.49632 17.7537 6 18.375 6H22.409L16.4545 11.9545C16.0152 12.3938 16.0152 13.1062 16.4545 13.5455C16.8938 13.9848 17.6062 13.9848 18.0455 13.5455L24 7.59099V11.625C24 12.2463 24.5037 12.75 25.125 12.75C25.7463 12.75 26.25 12.2463 26.25 11.625V4.875C26.25 4.25368 25.7463 3.75 25.125 3.75H18.375Z"
+                                      fill="#2D323D"/>
+                                <path d="M6 18.375C6 17.7537 5.49632 17.25 4.875 17.25C4.25368 17.25 3.75 17.7537 3.75 18.375V25.125C3.75 25.7463 4.25368 26.25 4.875 26.25H11.625C12.2463 26.25 12.75 25.7463 12.75 25.125C12.75 24.5037 12.2463 24 11.625 24H7.59099L13.5455 18.0455C13.9848 17.6062 13.9848 16.8938 13.5455 16.4545C13.1062 16.0152 12.3938 16.0152 11.9545 16.4545L6 22.409V18.375Z"
+                                      fill="#2D323D"/>
+                            </svg>
+                            <span class="caption">10 м<sup>2</sup></span>
+                        </div>
+                        <div class="icon-container">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.25 7.5C16.25 6.80964 15.6904 6.25 15 6.25C14.3096 6.25 13.75 6.80964 13.75 7.5V15C13.75 15.4735 14.0175 15.9063 14.441 16.118L19.441 18.618C20.0585 18.9268 20.8093 18.6765 21.118 18.059C21.4268 17.4415 21.1765 16.6907 20.559 16.382L16.25 14.2275V7.5Z"
+                                      fill="#2D323D"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M15 1.25C7.40608 1.25 1.25 7.40608 1.25 15C1.25 22.5939 7.40608 28.75 15 28.75C22.5939 28.75 28.75 22.5939 28.75 15C28.75 7.40608 22.5939 1.25 15 1.25ZM3.75 15C3.75 8.7868 8.7868 3.75 15 3.75C21.2132 3.75 26.25 8.7868 26.25 15C26.25 21.2132 21.2132 26.25 15 26.25C8.7868 26.25 3.75 21.2132 3.75 15Z"
+                                      fill="#2D323D"/>
+                            </svg>
+                            <span class="caption">2 недели</span>
+                        </div>
+                    </div>
+                    <button class="button-small button-text-S">
+                        подробнее
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-container-row">
+            <div class="portfolio-gallery left">
+                <!-- Flickity Slider-->
+                <div class="container-carousel">
+                    <div class="carousel carousel-portfolio-2" data-type="portfolio-2">
+                        <div class="carousel-cell">
+                            <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                        </div>
+                        <div class="carousel-cell">
+                            <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                        </div>
+                        <div class="carousel-cell">
+                            <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                        </div>
+                        <div class="carousel-cell">
+                            <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                        </div>
+                    </div>
+
+                    <div class="carousel-ui">
+                        <p class="carousel-status status-portfolio-2">
+                            <span class="start"></span>
+                            <span class="divider"></span>
+                            <span class="end"></span>
+                        </p>
+
+                        <div class="container-button">
+                            <button class="button button-arrow button--previous button-p-portfolio-2">
+                                <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.9435 8.7239C16.4642 9.2446 16.4642 10.0888 15.9435 10.6095L12.8863 13.6667L20.334 13.6667C21.0704 13.6667 21.6673 14.2637 21.6673 15C21.6673 15.7364 21.0704 16.3334 20.334 16.3334L12.8863 16.3334L15.9435 19.3906C16.4642 19.9113 16.4642 20.7555 15.9435 21.2762C15.4228 21.7969 14.5785 21.7969 14.0578 21.2762L8.72451 15.9428C8.20381 15.4222 8.20381 14.5779 8.72451 14.0572L14.0578 8.7239C14.5785 8.2032 15.4228 8.2032 15.9435 8.7239Z"
+                                          fill="#2D323D"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M0.333984 15C0.333984 6.89986 6.90047 0.333374 15.0007 0.333374C23.1008 0.333374 29.6673 6.89986 29.6673 15C29.6673 23.1002 23.1008 29.6667 15.0007 29.6667C6.90047 29.6667 0.333984 23.1002 0.333984 15ZM15.0007 3.00004C8.37323 3.00004 3.00065 8.37262 3.00065 15C3.00065 21.6275 8.37323 27 15.0007 27C21.6281 27 27.0006 21.6275 27.0006 15C27.0006 8.37262 21.6281 3.00004 15.0007 3.00004Z"
+                                          fill="#2D323D"/>
+                                </svg>
+                            </button>
+
+                            <button class="button button-arrow button--next button-n-portfolio-2">
+                                <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.9435 8.7239L21.2768 14.0572C21.7975 14.5779 21.7975 15.4222 21.2768 15.9428L15.9435 21.2762C15.4228 21.7969 14.5785 21.7969 14.0578 21.2762C13.5371 20.7555 13.5371 19.9113 14.0578 19.3906L17.115 16.3334H9.66732C8.93094 16.3334 8.33398 15.7364 8.33398 15C8.33398 14.2637 8.93094 13.6667 9.66732 13.6667H17.115L14.0578 10.6095C13.5371 10.0888 13.5371 9.2446 14.0578 8.7239C14.5785 8.2032 15.4228 8.2032 15.9435 8.7239Z"
+                                          fill="#2D323D"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M0.333984 15C0.333984 6.89986 6.90047 0.333374 15.0007 0.333374C23.1008 0.333374 29.6673 6.89986 29.6673 15C29.6673 23.1002 23.1008 29.6667 15.0007 29.6667C6.90047 29.6667 0.333984 23.1002 0.333984 15ZM15.0007 3.00004C8.37323 3.00004 3.00065 8.37262 3.00065 15C3.00065 21.6275 8.37323 27 15.0007 27C21.6281 27 27.0006 21.6275 27.0006 15C27.0006 8.37262 21.6281 3.00004 15.0007 3.00004Z"
+                                          fill="#2D323D"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flickity Slider End-->
+            </div>
+            <div class="portfolio-text-container left">
+                <div>
+                    <div class="portfolio-text-heading">
+                        <h3>ремонт студии, 2023</h3>
+                        <p class="body-2">ЖК Северный квартал, Брусника</p>
+                    </div>
+                    <p class="body-2">Демонтаж, черновые, отделочные работы по дизайн-проекту</p>
+                    <div class="icons-container">
+                        <div class="icon-container">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.375 3.75C17.7537 3.75 17.25 4.25368 17.25 4.875C17.25 5.49632 17.7537 6 18.375 6H22.409L16.4545 11.9545C16.0152 12.3938 16.0152 13.1062 16.4545 13.5455C16.8938 13.9848 17.6062 13.9848 18.0455 13.5455L24 7.59099V11.625C24 12.2463 24.5037 12.75 25.125 12.75C25.7463 12.75 26.25 12.2463 26.25 11.625V4.875C26.25 4.25368 25.7463 3.75 25.125 3.75H18.375Z"
+                                      fill="#2D323D"/>
+                                <path d="M6 18.375C6 17.7537 5.49632 17.25 4.875 17.25C4.25368 17.25 3.75 17.7537 3.75 18.375V25.125C3.75 25.7463 4.25368 26.25 4.875 26.25H11.625C12.2463 26.25 12.75 25.7463 12.75 25.125C12.75 24.5037 12.2463 24 11.625 24H7.59099L13.5455 18.0455C13.9848 17.6062 13.9848 16.8938 13.5455 16.4545C13.1062 16.0152 12.3938 16.0152 11.9545 16.4545L6 22.409V18.375Z"
+                                      fill="#2D323D"/>
+                            </svg>
+                            <span class="caption">10 м<sup>2</sup></span>
+                        </div>
+                        <div class="icon-container">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.25 7.5C16.25 6.80964 15.6904 6.25 15 6.25C14.3096 6.25 13.75 6.80964 13.75 7.5V15C13.75 15.4735 14.0175 15.9063 14.441 16.118L19.441 18.618C20.0585 18.9268 20.8093 18.6765 21.118 18.059C21.4268 17.4415 21.1765 16.6907 20.559 16.382L16.25 14.2275V7.5Z"
+                                      fill="#2D323D"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M15 1.25C7.40608 1.25 1.25 7.40608 1.25 15C1.25 22.5939 7.40608 28.75 15 28.75C22.5939 28.75 28.75 22.5939 28.75 15C28.75 7.40608 22.5939 1.25 15 1.25ZM3.75 15C3.75 8.7868 8.7868 3.75 15 3.75C21.2132 3.75 26.25 8.7868 26.25 15C26.25 21.2132 21.2132 26.25 15 26.25C8.7868 26.25 3.75 21.2132 3.75 15Z"
+                                      fill="#2D323D"/>
+                            </svg>
+                            <span class="caption">2 недели</span>
+                        </div>
+                    </div>
+                    <button class="button-small button-text-S">
+                        подробнее
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-container-row">
+            <div class="portfolio-gallery">
+                <!-- Flickity Slider-->
+                <div class="container-carousel">
+                    <div class="carousel carousel-portfolio-3" data-type="portfolio-3">
+                        <div class="carousel-cell">
+                            <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                        </div>
+                        <div class="carousel-cell">
+                            <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                        </div>
+                        <div class="carousel-cell">
+                            <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                        </div>
+                        <div class="carousel-cell">
+                            <img class="carousel-cell-image" src="img/hero_gallery/img_hero_3.png" alt="фото квартиры">
+                        </div>
+                    </div>
+
+                    <div class="carousel-ui">
+                        <p class="carousel-status status-portfolio-3">
+                            <span class="start"></span>
+                            <span class="divider"></span>
+                            <span class="end"></span>
+                        </p>
+
+                        <div class="container-button">
+                            <button class="button button-arrow button--previous button-p-portfolio-3">
+                                <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.9435 8.7239C16.4642 9.2446 16.4642 10.0888 15.9435 10.6095L12.8863 13.6667L20.334 13.6667C21.0704 13.6667 21.6673 14.2637 21.6673 15C21.6673 15.7364 21.0704 16.3334 20.334 16.3334L12.8863 16.3334L15.9435 19.3906C16.4642 19.9113 16.4642 20.7555 15.9435 21.2762C15.4228 21.7969 14.5785 21.7969 14.0578 21.2762L8.72451 15.9428C8.20381 15.4222 8.20381 14.5779 8.72451 14.0572L14.0578 8.7239C14.5785 8.2032 15.4228 8.2032 15.9435 8.7239Z"
+                                          fill="#2D323D"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M0.333984 15C0.333984 6.89986 6.90047 0.333374 15.0007 0.333374C23.1008 0.333374 29.6673 6.89986 29.6673 15C29.6673 23.1002 23.1008 29.6667 15.0007 29.6667C6.90047 29.6667 0.333984 23.1002 0.333984 15ZM15.0007 3.00004C8.37323 3.00004 3.00065 8.37262 3.00065 15C3.00065 21.6275 8.37323 27 15.0007 27C21.6281 27 27.0006 21.6275 27.0006 15C27.0006 8.37262 21.6281 3.00004 15.0007 3.00004Z"
+                                          fill="#2D323D"/>
+                                </svg>
+                            </button>
+
+                            <button class="button button-arrow button--next button-n-portfolio-3">
+                                <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.9435 8.7239L21.2768 14.0572C21.7975 14.5779 21.7975 15.4222 21.2768 15.9428L15.9435 21.2762C15.4228 21.7969 14.5785 21.7969 14.0578 21.2762C13.5371 20.7555 13.5371 19.9113 14.0578 19.3906L17.115 16.3334H9.66732C8.93094 16.3334 8.33398 15.7364 8.33398 15C8.33398 14.2637 8.93094 13.6667 9.66732 13.6667H17.115L14.0578 10.6095C13.5371 10.0888 13.5371 9.2446 14.0578 8.7239C14.5785 8.2032 15.4228 8.2032 15.9435 8.7239Z"
+                                          fill="#2D323D"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M0.333984 15C0.333984 6.89986 6.90047 0.333374 15.0007 0.333374C23.1008 0.333374 29.6673 6.89986 29.6673 15C29.6673 23.1002 23.1008 29.6667 15.0007 29.6667C6.90047 29.6667 0.333984 23.1002 0.333984 15ZM15.0007 3.00004C8.37323 3.00004 3.00065 8.37262 3.00065 15C3.00065 21.6275 8.37323 27 15.0007 27C21.6281 27 27.0006 21.6275 27.0006 15C27.0006 8.37262 21.6281 3.00004 15.0007 3.00004Z"
+                                          fill="#2D323D"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flickity Slider End-->
+            </div>
+            <div class="portfolio-text-container">
+                <div>
+                    <div class="portfolio-text-heading">
+                        <h3>ремонт студии, 2023</h3>
+                        <p class="body-2">ЖК Северный квартал, Брусника</p>
+                    </div>
+                    <p class="body-2">Демонтаж, черновые, отделочные работы по дизайн-проекту</p>
+                    <div class="icons-container">
+                        <div class="icon-container">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.375 3.75C17.7537 3.75 17.25 4.25368 17.25 4.875C17.25 5.49632 17.7537 6 18.375 6H22.409L16.4545 11.9545C16.0152 12.3938 16.0152 13.1062 16.4545 13.5455C16.8938 13.9848 17.6062 13.9848 18.0455 13.5455L24 7.59099V11.625C24 12.2463 24.5037 12.75 25.125 12.75C25.7463 12.75 26.25 12.2463 26.25 11.625V4.875C26.25 4.25368 25.7463 3.75 25.125 3.75H18.375Z"
+                                      fill="#2D323D"/>
+                                <path d="M6 18.375C6 17.7537 5.49632 17.25 4.875 17.25C4.25368 17.25 3.75 17.7537 3.75 18.375V25.125C3.75 25.7463 4.25368 26.25 4.875 26.25H11.625C12.2463 26.25 12.75 25.7463 12.75 25.125C12.75 24.5037 12.2463 24 11.625 24H7.59099L13.5455 18.0455C13.9848 17.6062 13.9848 16.8938 13.5455 16.4545C13.1062 16.0152 12.3938 16.0152 11.9545 16.4545L6 22.409V18.375Z"
+                                      fill="#2D323D"/>
+                            </svg>
+                            <span class="caption">10 м<sup>2</sup></span>
+                        </div>
+                        <div class="icon-container">
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.25 7.5C16.25 6.80964 15.6904 6.25 15 6.25C14.3096 6.25 13.75 6.80964 13.75 7.5V15C13.75 15.4735 14.0175 15.9063 14.441 16.118L19.441 18.618C20.0585 18.9268 20.8093 18.6765 21.118 18.059C21.4268 17.4415 21.1765 16.6907 20.559 16.382L16.25 14.2275V7.5Z"
+                                      fill="#2D323D"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M15 1.25C7.40608 1.25 1.25 7.40608 1.25 15C1.25 22.5939 7.40608 28.75 15 28.75C22.5939 28.75 28.75 22.5939 28.75 15C28.75 7.40608 22.5939 1.25 15 1.25ZM3.75 15C3.75 8.7868 8.7868 3.75 15 3.75C21.2132 3.75 26.25 8.7868 26.25 15C26.25 21.2132 21.2132 26.25 15 26.25C8.7868 26.25 3.75 21.2132 3.75 15Z"
+                                      fill="#2D323D"/>
+                            </svg>
+                            <span class="caption">2 недели</span>
+                        </div>
+                    </div>
+                    <button class="button-small button-text-S">
+                        подробнее
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-button-container">
+        <a href="page_under_costruction.html">
+            <button class="button-large button-text-M">посмотреть галерею</button>
+        </a>
+    </div>
+</section>
+<!--Section Portfolio End-->
+
+<!--Section Types-->
+<section class="grid" id="section-types">
+    <div class="heading types-heading">
+        <div id="types-line"></div>
+        <div></div>
+        <h2>Виды работ</h2>
+    </div>
+    <div class="types-container">
+        <div class="types-text-container">
+            <div class="overflow-container">
+                <div class="content">
+                    <h3>Ремонт и<br>отделочные работы</h3>
+                    <p class="body-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation </p>
+                    <hr>
+                </div>
+                <div class="content">
+                    <h3>Ремонт и<br>отделочные работы</h3>
+                    <p class="body-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation </p>
+                    <hr>
+                </div>
+                <div class="content">
+                    <h3>Ремонт и<br>отделочные работы</h3>
+                    <p class="body-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation </p>
+                    <hr>
+                </div>
+                <div class="content">
+                    <h3>Ремонт и<br>отделочные работы</h3>
+                    <p class="body-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation </p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="types-img">
+        </div>
+    </div>
+</section>
+<!--Section Types End-->
+
+<!--Section Stages-->
+<section class="grid section-stages">
+    <div class="heading stages-heading">
+        <div id="stages-line"></div>
+        <div></div>
+        <h2>Этапы работ</h2>
+    </div>
+    <div class="stages-container">
+        <div class="stages-row">
+            <div class="stages-item">
+                <div class="number">
+                    <span>1</span>
+                </div>
+                <div class="text body-2">
+                    <h3>Консультация</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et</p>
+                </div>
+            </div>
+
+            <div class="stages-item">
+                <div class="number">
+                    <span>2</span>
+                </div>
+                <div class="text body-2">
+                    <h3>Замеры</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et</p>
+                </div>
+            </div>
+
+            <div class="stages-item">
+                <div class="number">
+                    <span>3</span>
+                </div>
+                <div class="text body-2">
+                    <h3>Расчет сметы</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="stages-row two">
+            <div class="stages-item">
+                <div class="number">
+                    <span>4</span>
+                </div>
+                <div class="text body-2">
+                    <h3>Начало работ</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et</p>
+                </div>
+            </div>
+
+            <div class="stages-item">
+                <div class="number">
+                    <span>5</span>
+                </div>
+                <div class="text body-2">
+                    <h3>Конец работ</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section Stages End-->
+
+<!--Section Prices-->
+<section class="grid" id="section-prices">
+    <div class="heading prices-heading">
+        <div></div>
+        <h2>Цены</h2>
+    </div>
+    <div class="prices-container">
+        <div class="decor-left"></div>
+        <div class="decor-right"></div>
+        <div class="prices">
+            <div class="price-item">
+                <h3>стандарт</h3>
+                <p class="body-2">ОТ <span class="num_prices">5000</span> м<sup>2</sup></p>
+                <p class="body-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</p>
+            </div>
+            <div class="price-item center">
+                <h3>комфорт</h3>
+                <p class="body-2">ОТ <span class="num_prices">7000</span> м<sup>2</sup></p>
+                <p class="body-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</p>
+            </div>
+            <div class="price-item">
+                <h3>премиум</h3>
+                <p class="body-2">ОТ <span class="num_prices">10000</span> м<sup>2</sup></p>
+                <p class="body-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="prices-button-container">
+        <a href="page_under_costruction.html">
+            <button class="button-large button-text-M">прайс-лист</button>
+        </a>
+    </div>
+</section>
+<!--Section Prices End-->
+
+<!--Section Calc-->
+<section class="grid" id="section-calc">
+    <div class="calc-container">
+        <form id="calc-content">
+            <div id="calc-buttons">
+                <label class="calc-form-radio">
+                    <input class="button-radio-real" type="radio" name="type" value="5000" checked/>
+                    <span class="button-radio-fake button-text-M">стандарт</span>
+                </label>
+
+                <label class="calc-form-radio">
+                    <input class="button-radio-real" type="radio" name="type" value="7000"/>
+                    <span class="button-radio-fake button-text-M">комфорт</span>
+                </label>
+
+                <label class="calc-form-radio">
+                    <input class="button-radio-real" type="radio" name="type" value="10000"/>
+                    <span class="button-radio-fake button-text-M">премиум</span>
+                </label>
+            </div>
+
+            <div id="calc-forms">
+                <div class="calc-form-text">
+                    <label class="body-2">Площадь по полу, м<sup>2</sup>:</label>
+                    <input type="number" id="area" name="area" required>
+                </div>
+                <div class="calc-form-text">
+                    <label class="body-2">Количество комнат:</label>
+                    <input type="number" id="rooms" name="rooms" required>
+                </div>
+            </div>
+            <div id="calc-options">
+                <legend class="body-2">Дополнительно:</legend>
+
+                <label class="checkbox-container">Перепланировка
+                    <input type="checkbox" id="redevelopment" value="0.05">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox-container">Демонтаж
+                    <input type="checkbox" id="removal" value="0.1">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="checkbox-container">По дизайн-проекту
+                    <input type="checkbox" id="design" value="0.05">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div id="calc-bottom">
+                <button class="button-text-M button-medium" type="submit">ПОСЧИТАТЬ</button>
+                <div>
+                    <p class="body-2">Примерная стоимость:</p>
+                    <div class="calc-price-value">
+                        <span id="total-price">0</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="calc-right">
+        <div class="heading calc-heading">
+            <div></div>
+            <h2>КАЛЬКУЛЯТОР</h2>
+        </div>
+        <p class="calc-text body-1">Узнайте примерную стоимость ремонта онлайн</p>
+    </div>
+</section>
+<!--Section Calc End-->
+
+<!--Section Form-->
+<section class="grid" id="section-form">
+    <div class="form-container">
+        <form class="main-form" id="form-tg">
+            <p class="body-2">Чтобы получить бесплатную консультацию, оставьте вашу контактную информацию, и мы свяжемся
+                с вами.</p>
+            <div>
+                <input type="text" name="client-name" placeholder="ИМЯ" required/>
+                <input type="tel" name="client-phone" placeholder="НОМЕР ТЕЛЕФОНА" required/>
+            </div>
+            <input type="text" name="client-question" placeholder="ЧТО ИНТЕРЕСУЕТ?" required/>
+
+            <div class="main-form-bottom">
+                <button class="button-text-M button-medium" type="submit">ПОСЧИТАТЬ</button>
+                <span id="form-alert" class="body-2">Заявка успешно отправлена!</span>
+            </div>
+        </form>
+    </div>
+    <div class="form-right">
+        <p>insanstroy</p>
+    </div>
+</section>
+<!--Section Form End-->
+
+<!--Section FAQ-->
+<section class="grid" id="section-faq">
+    <div class="heading faq-heading">
+        <div></div>
+        <h2>Часто задаваемые вопросы</h2>
+    </div>
+
+    <div class="faq-container">
+        <div class="faq-accordion">
+            <div class="accordion-container">
+                <div class="label body-1">
+                    <span>001</span>Вы делаете квартиры "под ключ"?
+                </div>
+                <div class="content body-2">Hypertext Markup Language (HTML) is a computer language that makes up most
+                    web
+                    pages and online applications. A hypertext is a text that is used to reference other pieces of text,
+                    while a markup language is a series of markings that tells web servers the style and structure of a
+                    document. HTML is very simple to learn and use.
+                </div>
+            </div>
+            <div class="accordion-container">
+                <div class="label body-1">
+                    <span>002</span>Сколько в среднем длится ремонт?
+                </div>
+                <div class="content body-2">CSS stands for Cascading Style Sheets. It is the language for describing the
+                    presentation of Web pages, including colours, layout, and fonts, thus making our web pages
+                    presentable to the users. CSS is designed to make style sheets for the web. It is independent of
+                    HTML and can be used with any XML-based markup language. CSS is popularly called the design language
+                    of the web.
+                </div>
+            </div>
+            <div class="accordion-container">
+                <div class="label body-1">
+                    <span>003</span>Кто производит закупку материалов?
+                </div>
+                <div class="content body-2">JavaScript is a scripting or programming language that allows you to
+                    implement
+                    complex features on web pages — every time a web page does more than just sit there and display
+                    static information for you to look at — displaying timely content updates, interactive maps,
+                    animated 2D/3D graphics, scrolling video jukeboxes, etc. — you can bet that JavaScript is probably
+                    involved. It is the third of the web trio.
+                </div>
+            </div>
+            <div class="accordion-container">
+                <div class="label body-1">
+                    <span>004</span>Вы занимаетесь фасадными работами?
+                </div>
+                <div class="content body-2">React is a JavaScript library created for building fast and interactive user
+                    interfaces for web and mobile applications. It is an open-source, component-based, front-end library
+                    responsible only for the application’s view layer. In Model View Controller (MVC) architecture, the
+                    view layer is responsible for how the app looks and feels. React was created by Jordan Walke, a
+                    software engineer at Facebook.
+                </div>
+            </div>
+            <div class="accordion-container">
+                <div class="label body-1">
+                    <span>005</span>Вы занимаетесь доставкой, погрузкой, разгрузкой материалов?
+                </div>
+                <div class="content body-2">PHP is a server-side and general-purpose scripting language that is
+                    especially
+                    suited for web development. PHP originally stood for Personal Home Page. However, now, it stands for
+                    Hypertext Preprocessor. It’s a recursive acronym because the first word itself is also an acronym.
+                </div>
+            </div>
+            <div class="accordion-container">
+                <div class="label body-1">
+                    <span>006</span>Что будет со строительным мусором?
+                </div>
+                <div class="content body-2">Node.js is an open-source, cross-platform, back-end JavaScript runtime
+                    environment
+                    that runs on the V8 engine and executes JavaScript code outside a web browser. Node.js lets
+                    developers use JavaScript to write command line tools and for server-side scripting—running scripts
+                    server-side to produce dynamic web page content before the page is sent to the user's web browser.
+                    Consequently, Node.js represents a "JavaScript everywhere" paradigm
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section FAQ End-->
+
+<!--Footer-->
+<footer class="grid" id="footer">
+    <div class="footer-container">
+        <div class="footer-first">
+            <div id="first-logo">
+                <img class="footer-logo" src="img/icons/img_logo.svg" alt="logo">
+                <div>
+                    <p class="body-2 footer-address">г. Екатеринбург, ул. Красных командиров, 16</p>
+                    <p class="body-2">Без выходных, 9:00 - 22:00</p>
+                </div>
+            </div>
+            <div id="first-contact">
+                <p class="text">Если у вас возникли какие-либо вопросы,<br>
+                    свяжитесь любым удобным способом.<br>
+                    Наши специалисты бесплатно проконсультируют вас.</p>
+                <div class="contacts">
+                    <div class="contacts-col">
+                        <a class="contacts-link"
+                           href="https://wa.me/79122617576?text=Здравствуйте,%20перешел%20с%20сайта,%20интересует..."
+                           target="_blank">
+                            WHATSAPP
+                        </a>
+                        <a class="contacts-link"
+                           href="https://t.me/insan64"
+                           target="_blank">
+                            TELEGRAM
+                        </a>
+                    </div>
+                    <div class="contacts-col">
+                        <a class="contacts-link" href="tel:+79122617576">+7 (912) 261-75-76</a>
+                        <a class="contacts-link" href="mailto:info@insanstroy.ru">
+                            info@insanstroy.ru
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-second">
+            <div class="nav-content">
+                <p>ИП Далбаев Т.Т.<br>ИНН: 667359241100</p>
+                <div class="nav-links">
+                    <a href="#section-about" class="nav-link">о нас</a>
+                    <a href="#section-portfolio" class="nav-link">портфолио</a>
+                    <a href="#section-types" class="nav-link">виды работ</a>
+                    <a href="#section-prices" class="nav-link">цены</a>
+                    <a href="#section-calc" class="nav-link">калькулятор</a>
+                    <a href="#section-faq" class="nav-link">faq</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-third">
+            <p>разработка: @apterousteen</p>
+            <p>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</p>
+        </div>
+    </div>
+</footer>
+<!--Footer End-->
+
+<!--<section class="grid">-->
+<!--    <div class="box">1</div>-->
+<!--    <div class="box">2</div>-->
+<!--    <div class="box">3</div>-->
+<!--    <div class="box">4</div>-->
+<!--    <div class="box">5</div>-->
+<!--    <div class="box">6</div>-->
+<!--    <div class="box">7</div>-->
+<!--    <div class="box">8</div>-->
+<!--    <div class="box">9</div>-->
+<!--    <div class="box">10</div>-->
+<!--    <div class="box">11</div>-->
+<!--    <div class="box">12</div>-->
+<!--</section>-->
 </body>
 </html>
