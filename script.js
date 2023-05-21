@@ -32,10 +32,10 @@ const checkboxRemoval = document.querySelector('input[id="removal"]');
 const checkboxDesign = document.querySelector('input[id="design"]');
 const totalPriceElement = document.querySelector('#total-price');
 
-let planPrice = 5000;
-let coef;
+let planPrice = 0;
+let coef = 0;
 
-function calculate(e) {
+const calculate = function (e) {
     e.preventDefault();
 
     // type of renovation
@@ -52,9 +52,10 @@ function calculate(e) {
         3: 1.10,
         4: 1.15,
     };
+
     coef = coefficients[inputRooms.value] || 1.2;
 
-    let basePrice = (planPrice * inputArea.value) * coef;
+    let basePrice = planPrice * inputArea.value * coef;
     let totalPrice = basePrice;
 
     // additional options
