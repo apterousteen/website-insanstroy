@@ -898,7 +898,7 @@ h3 {
 /* SECTION CALC */
 #section-calc {
     height: fit-content;
-    padding-top: 111px;
+    padding-top: 112px;
     max-width: 100%;
     width: 100vw;
     grid-template-columns: 1fr repeat(12, 64px) 1fr;
